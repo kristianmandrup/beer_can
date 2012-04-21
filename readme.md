@@ -62,7 +62,7 @@ CanDo.prototype.byAny = -> (models)
   # ...
 
 anyOfThe -> (models)
-  return new CanDo(true)
+  return new BeerCan.RuleResult(true)
 ```
 
 ```coffeescript
