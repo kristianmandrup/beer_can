@@ -2,15 +2,12 @@ class BeerCan.ActionRule # extends Class
   constructor: (actions) ->
     initialize(actions)
 
-  initialize: (actions) ->
-    @actions = actions
+  initialize: (@actions) ->
 
-  any: (model_classes) ->
-    @model_classes = model_classes
+  any: (@model_classes) ->
     new BeerCan.Rule(@)
 
-  the: (model) ->
-    @model = model
+  the: (@model) ->
     new Rule(@)
 
   all_the: (models) ->

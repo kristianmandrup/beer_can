@@ -13,11 +13,10 @@ class BeerCan.Rule # extends Class
   constructor: (baseBehavior, action, subject, closure) ->
     @initialize (baseBehavior, action, subject, closure)
 
-  initialize: (baseBehavior, action, subject, closure) ->
+  initialize: (@baseBehavior, action, subject, @closure) ->
     if closure and not _.isFunction(closure)
       throw new Error("The last argument must be a closure, was: #{closure}") 
     @matchAll = (action isnt null and subject isnt null)
-    [@baseBehavior, @closure] = [baseBehavior, closure]
     [@actions, @subjects]      = [_.flatten(action), _.flatten(subject)]
 
     # Matches both the subject and action
