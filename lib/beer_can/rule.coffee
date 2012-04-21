@@ -18,9 +18,7 @@ class BeerCan.Rule # extends Class
       throw new Error("The last argument must be a closure, was: #{closure}") 
     @matchAll = (action isnt null and subject isnt null)
     [@baseBehavior, @closure] = [baseBehavior, closure]
-    @actions      = _.flatten action
-    @subjects     = _.flatten subject
-    @conditions   = conditions or {}
+    [@actions, @subjects]      = [_.flatten(action), _.flatten(subject)]
 
     # Matches both the subject and action
   relevant: (action, subject) ->
@@ -44,13 +42,9 @@ class BeerCan.Rule # extends Class
   matchesSubject: (subject) ->
     'all' in @subjects or subject in @subjects or matchesSubjectClass(subject)
 
-  # TODO: Fix!
   matchesSubjectClass: (subject) ->
     @subjects.matchesAny: (sub) ->
-      if sub.prototype.prototype isnt sub.prototype
-        matchesAny(prototype)
-      else
-        subject.prototype is sub # test prototype hierarchy
+      subject instanceof sub
 
   callClosureWithAll: (action, subject, args...) ->
       if _.isClass(subject.class)
