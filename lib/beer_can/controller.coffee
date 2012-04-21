@@ -1,4 +1,4 @@
-Tower.Authorization.BeerCan.Controller extends Tower.Controller
+Tower.Controller extend Tower.Authorization.BeerCan.Controller
   currentAbility ->
     @currentAbility = Tower.Authorization.BeerCan.Ability.new(current_user)
 

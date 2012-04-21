@@ -1,4 +1,4 @@
-Tower.Authorization.BeerCan.Rule extends Class
+Tower.Authorization.BeerCan.Rule extend Class
   # This class is used internally and should only be called through Ability.
   # it holds the information about a "can" call made on Ability and provides
   # helpful methods to determine permission checking and conditions hash generation.
@@ -15,10 +15,10 @@ Tower.Authorization.BeerCan.Rule extends Class
       throw new Error("The last argument must be a closure, was: #{closure}") 
     @matchAll = (action =! null && subject != null)
     @baseBehavior = baseBehavior
-    @actions = [action].flatten
-    @subjects = [subject].flatten
-    @conditions = conditions || {}
-    @closure = closure
+    @actions      = _.flatten action
+    @subjects     = _.flatten subject
+    @conditions   = conditions || {}
+    @closure      = closure
 
     # Matches both the subject and action
   relevant -> (action, subject)
@@ -35,29 +35,24 @@ Tower.Authorization.BeerCan.Rule extends Class
 
   subjectClass -> (subject)
     _.isClass(subject) ? subject : subject.class
-  end
 
   matchesAction -> (action)
-    @expandedActions.includes('manage') || @expandedActions.includes('action')
-  end
+    @expandedActions.indexOf('manage') || @expandedActions.indexOf('action')
 
   matchesSubject -> (subject)
-    @subjects.includes('all') || @subjects.includes(subject) || matchesSubjectClass(subject)
-  end
+    @subjects.indexOf('all') || @subjects.indexOf(subject) || matchesSubjectClass(subject)
 
   # TODO: Fix!
   matchesSubjectClass -> (subject)
-    @subjects.matchesAny -> (sub)  
-      a = sub.kind_of(Module) && (subject.kind_of?(sub) 
-      b = subject.class.to_s == sub.to_s
-      c = subject.kind_of?(Module) && subject.ancestors.include?(sub))
-      a || b || c
+    @subjects.matchesAny -> (sub)
+      if sub.prototype.prototype != sub.prototype
+        matchesAny(prototype)
+      else
+        subject.prototype == sub # test prototype hierarchy
 
   callClosureWithAll -> (action, subject, args)
       if _.isClass(subject.class)
         @closure action, subject, nil, args
       else
         @closure action, subject.class, subject, args
-      end
-    end
 

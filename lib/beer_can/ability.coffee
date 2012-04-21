@@ -20,7 +20,7 @@ Tower.Authorization.BeerCan.Ability extend Class
       	rule.matchesConditions(action, subject, extra_args)
     )
     match ? match.baseBehavior : false
-  end
+
 
   # Convenience method which works the same as "can?" but returns the opposite value.
   #
@@ -128,9 +128,8 @@ Tower.Authorization.BeerCan.Ability extend Class
     results = [action]
     _.each(aliasedActions,
     	-> (aliasedAction, actions)
-      	results += aliasesForAction(aliasedAction) if actions.includes action
+      	results += aliasesForAction(aliasedAction) if actions.indexOf action
     results
-  end
 
   rules ->
     @rules ||= []
@@ -145,9 +144,8 @@ Tower.Authorization.BeerCan.Ability extend Class
 
 
   defaultAliasActions ->
-    {
-      'read' => ['index', 'show'],
-      'create' => ['new'],
-      'update' => ['edit'],
-    }
+    'read':   ['index', 'show'],
+    'create': ['new'],
+    'update': ['edit'],
+
 
