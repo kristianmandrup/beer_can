@@ -31,7 +31,7 @@ class BeerCan.Rule # extends Class
   matchesConditions: (action, subject, args) ->
       if @matchAll
         callClosureWithAll(action, subject, args)
-      else if @closure && !subjectClass(subject)
+      else if @closure && not subjectClass(subject)
         @closure(subject, args)
       else
         true
@@ -48,10 +48,10 @@ class BeerCan.Rule # extends Class
   # TODO: Fix!
   matchesSubjectClass: (subject) ->
     @subjects.matchesAny: (sub) ->
-      if sub.prototype.prototype != sub.prototype
+      if sub.prototype.prototype isnt sub.prototype
         matchesAny(prototype)
       else
-        subject.prototype == sub # test prototype hierarchy
+        subject.prototype is sub # test prototype hierarchy
 
   callClosureWithAll: (action, subject, args) ->
       if _.isClass(subject.class)

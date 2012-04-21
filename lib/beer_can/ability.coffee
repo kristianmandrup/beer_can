@@ -99,7 +99,6 @@ class BeerCan.Ability # extends Class
   cannot: (action, subject, closure) ->
     rules.concat BeerCan.Rule.new(false, action, subject, closure)
 
-
   # The following aliases are added by default for conveniently mapping common controller actions.
   #
   #   alias_action :index, :show, :to => :read
@@ -109,12 +108,12 @@ class BeerCan.Ability # extends Class
   # This way one can use params[:action] in the controller to determine the permission.
   aliasAction: (args) ->
     target = args.pop[:to]
-    aliasedActions[target] ||= []
+    aliasedActions[target] =? []
     aliasedActions[target] += args
 
   # Returns a hash of aliased actions. The key is the target and the value is an array of actions aliasing the key.
   aliased_actions: ->
-    @aliasedActions ||= defaultAliasActions
+    @aliasedActions =? defaultAliasActions
 
   # Removes previously aliased actions including the defaults.
   clearAliasedActions: ->
@@ -131,7 +130,7 @@ class BeerCan.Ability # extends Class
     results
 
   rules: ->
-    @rules ||= []
+    @rules =? []
 
   # Returns an array of Rule instances which match the action and subject
   # This does not take into consideration any hash conditions or block statements
