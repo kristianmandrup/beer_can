@@ -1,4 +1,7 @@
 class BeerCan.ActionRule # extends Class
+  constructor: (actions) ->
+    initialize(actions)
+
   initialize: (actions) ->
     @actions = actions
 
