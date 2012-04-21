@@ -29,6 +29,17 @@ if adminUser.can('manage').anyOfThe(@posts)
 if adminUser.can('manage').anyOfThe(@posts).byAny('author', boss)
 ```
 
+This sort of functionality can implemented by adding functionality to the Boolean objects (or derivatives thereof?).
+
+```coffeescript
+CanDo extends Boolean
+CanDo.prototype.byAny = -> (models)
+  # ...
+
+anyOfThe -> (models)
+  return new CanDo(true)
+```
+
 ```coffeescript
 MyApp.Ability extends Tower.BeerCan.Ability
   initialize -> (subject, options = {})
