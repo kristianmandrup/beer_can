@@ -29,7 +29,17 @@ if adminUser.can('manage').anyOfThe(@posts)
 if adminUser.can('manage').anyOfThe(@posts).byAny('author', boss)
 ```
 
-This sort of functionality can implemented by adding functionality to the Boolean objects (or derivatives thereof?).
+For this to work in a view or controller, the model in question must be decorated with appropriate context in order to authorize with that context in mind.
+
+Imagine a before filter in a controller:
+
+```coffeescript
+current_user.cans(@)
+```
+
+Now that user object would have access to the request and params object etc, have a `can` and `cannot` method added, which both create an Ability wrapping itself, and with the context passed into `cans`. See Ability constructor.
+
+This advanced DSL above can be implemented by adding functionality to the Boolean objects (I think). Then instead of returning simple boolean return a CanDo instance that extends Boolean with additional DSL functions.
 
 ```coffeescript
 CanDo extends Boolean
