@@ -1,0 +1,52 @@
+{
+  "name":                 "beer_can",
+  "version":              "0.1.0",
+  "description":          "Tower plugin - Authorization system based on CanCan",
+  "homepage":             "https://github.com/kristianmandrup/beer_can",
+  "main":                 "lib/beer_can.js",
+  "author":               "Kristian Mandrup <kmandrup@gmail.com>",
+  "keywords": [
+    "framework",
+    "node"
+  ],
+  "maintainers": [{
+    "name":               "Kristian Mandrup",
+    "email":              "kmandrup@gmail.com",
+    "web":                "https://github.com/kristianmandrup"
+  }],
+  "contributors": [
+  
+  ],
+  "licenses": [
+    {
+      "type":             "MIT",
+      "url":              "http://mths.be/mit"
+    }
+  ],
+  "bugs": {
+    "url":                "https://github.com/kristianmandrup/beer_can/issues"
+  },
+  "repository": {
+    "type":               "git",
+    "url":                "https://github.com/kristianmandrup/beer_can.git"
+  },
+  "engines": {
+    "node":               ">= 0.4.0"
+  },
+  "directories": {
+    "lib" :               "./lib"
+  },
+  "bin": {
+    "tower":              "./bin/tower"
+  },
+  "dependencies": {
+    "tower":              ">= 0.4.0",
+    "underscore.string":  ">= 1.2.0"
+  },
+  "devDependencies": {
+    "coffee-script":      ">= 1.2.0",
+    "mocha":              ">= 0.8.1"
+  },
+  "scripts": {
+    "test": "mocha $(find test -name \"*Test.coffee\") -r coffee-script $@"
+  }
