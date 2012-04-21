@@ -16,7 +16,7 @@ class BeerCan.Rule # extends Class
   initialize: (@baseBehavior, action, subject, @closure) ->
     if closure and not _.isFunction(closure)
       throw new Error("The last argument must be a closure, was: #{closure}") 
-    @matchAll = (action isnt null and subject isnt null)
+    @matchAll = (action? and subject?)
     [@actions, @subjects]      = [_.flatten(action), _.flatten(subject)]
 
     # Matches both the subject and action
