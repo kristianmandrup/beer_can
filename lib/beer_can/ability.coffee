@@ -26,7 +26,7 @@ class BeerCan.Ability # extends Class
   #   cannot? :destroy, @project
   #
   cannot: (args...) ->
-    !can args
+    !can args...
 
   # Defines which abilities are allowed using two arguments. The first one is the action
   # you're setting the permission for, the second one is the class of object you're setting it on.

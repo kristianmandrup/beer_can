@@ -14,24 +14,23 @@ class BeerCan.Rule # extends Class
     @initialize (baseBehavior, action, subject, closure)
 
   initialize: (baseBehavior, action, subject, closure) ->
-    if closure && !_.isFunction(closure)
+    if closure and not _.isFunction(closure)
       throw new Error("The last argument must be a closure, was: #{closure}") 
-    @matchAll = (action =! null && subject != null)
-    @baseBehavior = baseBehavior
+    @matchAll = (action isnt null and subject isnt null)
+    [@baseBehavior, @closure] = [baseBehavior, closure]
     @actions      = _.flatten action
     @subjects     = _.flatten subject
-    @conditions   = conditions || {}
-    @closure      = closure
+    @conditions   = conditions or {}
 
     # Matches both the subject and action
   relevant: (action, subject) ->
-      @match_all || (matchesAction(action) && matchesSubject(subject))
+      @match_all or (matchesAction(action) and matchesSubject(subject))
 
     # Matches the block or conditions hash
   matchesConditions: (action, subject, args...) ->
       if @matchAll
-        callClosureWithAll(action, subject, args)
-      else if @closure && not subjectClass(subject)
+        callClosureWithAll(action, subject, args...)
+      else if @closure and not subjectClass(subject)
         @closure(subject, args)
       else
         true
@@ -40,10 +39,10 @@ class BeerCan.Rule # extends Class
     _.isClass(subject) ? subject : subject.class
 
   matchesAction: (action) ->
-    'manage' in @expandedActions || action in @expandedActions
+    'manage' in @expandedActions or action in @expandedActions
 
   matchesSubject: (subject) ->
-    'all' in @subjects || subject in @subjects || matchesSubjectClass(subject)
+    'all' in @subjects or subject in @subjects or matchesSubjectClass(subject)
 
   # TODO: Fix!
   matchesSubjectClass: (subject) ->
@@ -55,6 +54,6 @@ class BeerCan.Rule # extends Class
 
   callClosureWithAll: (action, subject, args...) ->
       if _.isClass(subject.class)
-        @closure action, subject, nil, args
+        @closure action, subject, nil, args...
       else
-        @closure action, subject.class, subject, args
+        @closure action, subject.class, subject, args...
