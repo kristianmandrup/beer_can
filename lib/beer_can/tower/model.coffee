@@ -1,1 +1,1 @@
-Tower.Model extend BeerCan.ModelMixin
+Tower.Model extends BeerCan.ModelMixin

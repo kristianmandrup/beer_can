@@ -1,4 +1,4 @@
-Tower.Authorization.BeerCan.Ability extend Class
+class BeerCan.Ability # extends Class
   # Not only can you use the can? method in the controller and view (see ControllerAdditions),
   # but you can also call it directly on an ability instance.
   #
@@ -14,11 +14,10 @@ Tower.Authorization.BeerCan.Ability extend Class
   #   end
   #
   # Also see the RSpec Matchers to aid in testing.
-  can -> (action, subject, args)
-    match = relevantRulesForMatch(action, subject).detect( 
-    	-> (rule)
-      	rule.matchesConditions(action, subject, extra_args)
-    )
+  can: (action, subject, args) -> 
+    match = relevantRulesForMatch(action, subject).detect 
+    	(rule) ->
+      	rule.matchesConditions(action, subject, extra_args)    
     match ? match.baseBehavior : false
 
 
@@ -26,7 +25,7 @@ Tower.Authorization.BeerCan.Ability extend Class
   #
   #   cannot? :destroy, @project
   #
-  cannot -> (args)
+  cannot: (args) ->
     !can args
 
   # Defines which abilities are allowed using two arguments. The first one is the action
@@ -82,8 +81,8 @@ Tower.Authorization.BeerCan.Ability extend Class
   #     # check the database and return true/false
   #   end
   #
-  can -> (action, subject, closure)
-    rules.concat Tower.Authorization.BeerCan.Rule.new(true, action, subject, closure)
+  can: (action, subject, closure) ->
+    rules.concat BeerCan.Rule.new(true, action, subject, closure)
 
   # Defines an ability which cannot be done. Accepts the same arguments as "can".
   #
@@ -97,8 +96,8 @@ Tower.Authorization.BeerCan.Ability extend Class
   #     product.invisible?
   #   end
   #
-  cannot -> (action, subject, closure)
-    rules.concat Tower.Authorization.BeerCan.Rule.new(false, action, subject, closure)
+  cannot: (action, subject, closure) ->
+    rules.concat BeerCan.Rule.new(false, action, subject, closure)
 
 
   # The following aliases are added by default for conveniently mapping common controller actions.
@@ -108,42 +107,42 @@ Tower.Authorization.BeerCan.Ability extend Class
   #   alias_action :edit, :to => :update
   #
   # This way one can use params[:action] in the controller to determine the permission.
-  aliasAction -> (args)
+  aliasAction: (args) ->
     target = args.pop[:to]
     aliasedActions[target] ||= []
     aliasedActions[target] += args
 
   # Returns a hash of aliased actions. The key is the target and the value is an array of actions aliasing the key.
-  aliased_actions ->
+  aliased_actions: ->
     @aliasedActions ||= defaultAliasActions
 
   # Removes previously aliased actions including the defaults.
-  clearAliasedActions
+  clearAliasedActions: ->
     @aliasedActions = {}
 
 
   # Given an action, it will try to find all of the actions which are aliased to it.
   # This does the opposite kind of lookup as expand_actions.
- aliases_for_action -> (action)
-    results = [action]
+  aliases_for_action: (action) ->
+    results = _.flatten [action]
     _.each(aliasedActions,
     	-> (aliasedAction, actions)
       	results += aliasesForAction(aliasedAction) if actions.indexOf action
     results
 
-  rules ->
+  rules: ->
     @rules ||= []
 
   # Returns an array of Rule instances which match the action and subject
   # This does not take into consideration any hash conditions or block statements
-  relevantRules -> (action, subject)
-    rules.reverse.select 
-    	-> (rule)
+  relevantRules: (action, subject) ->
+    _.reverse(rules).select 
+      (rule) ->
       	rule.expandedActions = expandActions(rule.actions)
       	rule.relevant(action, subject)
 
 
-  defaultAliasActions ->
+  defaultAliasActions: ->
     'read':   ['index', 'show'],
     'create': ['new'],
     'update': ['edit'],

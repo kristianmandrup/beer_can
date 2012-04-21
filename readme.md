@@ -23,13 +23,19 @@ if currentUser.can('read').allThe(@posts)
 
 if adminUser.can('read', 'write').anyOfThe(@posts)
 
-if adminUser.can('manage').anyOfThe(@posts)
+render :partial => 'posts' if adminUser.can('manage').anyOfThe(@posts)
 
 # apply extra condition if rule is true
 if adminUser.can('manage').anyOfThe(@posts).byAny('author', boss)
 ```
 
-For this to work in a view or controller, the model in question must be decorated with appropriate context in order to authorize with that context in mind.
+In the API shown, the `can` call would return a `BeerCan.ActionRule` which is populated with the actions that can be performed. Alternatively, the classic CanCan API can be used (although less powerful and flexible).
+
+```coffeescript
+if adminUser.can('manage', posts)
+```
+
+For the above API to work in a view or controller, the model in question must be decorated with appropriate context in order to authorize with that context in mind.
 
 Imagine a before filter in a controller:
 
@@ -62,7 +68,7 @@ anyOfThe -> (models)
 ```coffeescript
 MyApp.Ability extends Tower.BeerCan.Ability
   initialize -> (subject, options = {})
-    subject.can('read').any(Post).by('author', subject.boss)
+    subject.can('read').any(Post).byThe('author', subject.boss)
 
     subject.can('read').any(Post).byAny('author', subject.bosses)
 
@@ -99,10 +105,10 @@ BeerCan.SpecialRelationships = {
 
 Complex conditions 
 
-* by(method_path) - object related to subject via method_path
-* by(method_path, other) - object related to other via method_path
-* by(method_path, other_fun) - object related to other via method_path
-* by(pathFun, other_fun) - object related to other via path
+* byThe(method_path) - object related to subject via method_path
+* byThe(method_path, other) - object related to other via method_path
+* byThe(method_path, other_fun) - object related to other via method_path
+* byThe(pathFun, other_fun) - object related to other via path
 
 * byAny(method_path) - subject part of objects via method_path
 * byAny(method_path, other) - other is part of method_path collection

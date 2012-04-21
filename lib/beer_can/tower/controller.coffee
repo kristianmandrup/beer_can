@@ -1,1 +1,1 @@
-Tower.Controller extend BeerCan.Mixin
+Tower.Controller extends BeerCan.Mixin

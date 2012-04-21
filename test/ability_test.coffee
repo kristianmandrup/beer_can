@@ -3,7 +3,7 @@ require '../config'
 describe 'Tower.Authorization.BeerCan.Ability', ->
 	beforeEach ->
     @ability = {}
-    @ability.extend Tower.Authorization.BeerCan.Ability
+    @ability.extends BeerCan.Ability
 
   it "should be able to 'read' anything", ->
     @ability.can 'read', 'all'
@@ -22,7 +22,6 @@ describe 'Tower.Authorization.BeerCan.Ability', ->
     	# TODO test that sym is nil when no instance is passed
     	-> (sym) 
       	"foo" 
-
     
     expect(@ability.can 'read', 'some_string').toBeTruthy()
 

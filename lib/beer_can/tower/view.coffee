@@ -1,0 +1,1 @@
+Tower.View extends BeerCan.Mixin
