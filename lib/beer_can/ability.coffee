@@ -142,8 +142,8 @@ class BeerCan.Ability # extends Class
 
 
   defaultAliasActions: ->
-    'read':   ['index', 'show'],
-    'create': ['new'],
-    'update': ['edit'],
+    'read':   ['index', 'show']
+    'create': ['new']
+    'update': ['edit']
 
 
