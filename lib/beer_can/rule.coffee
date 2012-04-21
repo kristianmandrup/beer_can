@@ -28,7 +28,7 @@ class BeerCan.Rule # extends Class
       @match_all || (matchesAction(action) && matchesSubject(subject))
 
     # Matches the block or conditions hash
-  matchesConditions: (action, subject, args) ->
+  matchesConditions: (action, subject, args...) ->
       if @matchAll
         callClosureWithAll(action, subject, args)
       else if @closure && not subjectClass(subject)
@@ -53,7 +53,7 @@ class BeerCan.Rule # extends Class
       else
         subject.prototype is sub # test prototype hierarchy
 
-  callClosureWithAll: (action, subject, args) ->
+  callClosureWithAll: (action, subject, args...) ->
       if _.isClass(subject.class)
         @closure action, subject, nil, args
       else

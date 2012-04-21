@@ -14,7 +14,7 @@ class BeerCan.Ability # extends Class
   #   end
   #
   # Also see the RSpec Matchers to aid in testing.
-  can: (action, subject, args) -> 
+  can: (action, subject, args...) -> 
     match = relevantRulesForMatch(action, subject).detect 
     	(rule) ->
       	rule.matchesConditions(action, subject, extra_args)    
@@ -25,7 +25,7 @@ class BeerCan.Ability # extends Class
   #
   #   cannot? :destroy, @project
   #
-  cannot: (args) ->
+  cannot: (args...) ->
     !can args
 
   # Defines which abilities are allowed using two arguments. The first one is the action
@@ -106,7 +106,7 @@ class BeerCan.Ability # extends Class
   #   alias_action :edit, :to => :update
   #
   # This way one can use params[:action] in the controller to determine the permission.
-  aliasAction: (args) ->
+  aliasAction: (args...) ->
     target = args.pop[:to]
     aliasedActions[target] =? []
     aliasedActions[target] += args
