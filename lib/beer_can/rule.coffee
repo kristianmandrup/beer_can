@@ -45,9 +45,9 @@ Tower.Authorization.BeerCan.Rule extends Class
     @subjects.includes('all') || @subjects.includes(subject) || matchesSubjectClass(subject)
   end
 
+  # TODO: Fix!
   matchesSubjectClass -> (subject)
-    @subjects.matchesAny -> (sub) 
-      # TODO: Fix! 
+    @subjects.matchesAny -> (sub)  
       a = sub.kind_of(Module) && (subject.kind_of?(sub) 
       b = subject.class.to_s == sub.to_s
       c = subject.kind_of?(Module) && subject.ancestors.include?(sub))
