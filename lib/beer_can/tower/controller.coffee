@@ -1,0 +1,1 @@
+Tower.Controller extend BeerCan.Mixin

@@ -1,0 +1,1 @@
+Tower.Model extend BeerCan.ModelMixin

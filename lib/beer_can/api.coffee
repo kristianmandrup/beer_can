@@ -1,15 +1,12 @@
-Tower.Controller extend Tower.Authorization.BeerCan.Controller
-  currentAbility ->
-    @currentAbility = Tower.Authorization.BeerCan.Ability.new(current_user)
-
+BeerCan.Api extend Class
   # This simply calls "can?" on the current_ability. See Ability#can?.
   def can(args)
-    currentAbility.can(*rgs)
+    currentAbility.can(args)
   end
 
   # Convenience method which works the same as "can?" but returns the opposite value.
   #
   #   cannot? :destroy, @project
   #
-  cannot -> (*args)
+  cannot -> (args)
     currentAbility.cannot(args)

@@ -1,4 +1,4 @@
-Tower.Authorization.BeerCan.Rule extend Class
+BeerCan.Rule extend Class
   # This class is used internally and should only be called through Ability.
   # it holds the information about a "can" call made on Ability and provides
   # helpful methods to determine permission checking and conditions hash generation.

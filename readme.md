@@ -34,10 +34,19 @@ For this to work in a view or controller, the model in question must be decorate
 Imagine a before filter in a controller:
 
 ```coffeescript
-current_user.cans(@)
+currentUser.cans(@)
 ```
 
 Now that user object would have access to the request and params object etc, have a `can` and `cannot` method added, which both create an Ability wrapping itself, and with the context passed into `cans`. See Ability constructor.
+
+We could also have a `defaultCanSubject` which by default is `currentUser`
+
+```coffeescript
+Tower.Authorization.BeerCan
+  defaultCanSubject -> 
+    currentUser
+```
+
 
 This advanced DSL above can be implemented by adding functionality to the Boolean objects (I think). Then instead of returning simple boolean return a CanDo instance that extends Boolean with additional DSL functions.
 
