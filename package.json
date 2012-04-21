@@ -1,7 +1,7 @@
 {
   "name":                 "beer_can",
   "version":              "0.1.0",
-  "description":          "Tower plugin - Authorization system based on CanCan",
+  "description":          "Tower plugin - Authorization system inspired by CanCan",
   "homepage":             "https://github.com/kristianmandrup/beer_can",
   "main":                 "lib/beer_can.js",
   "author":               "Kristian Mandrup <kmandrup@gmail.com>",
