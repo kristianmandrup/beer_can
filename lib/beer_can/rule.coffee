@@ -40,10 +40,10 @@ class BeerCan.Rule # extends Class
     _.isClass(subject) ? subject : subject.class
 
   matchesAction: (action) ->
-    @expandedActions.indexOf('manage') || @expandedActions.indexOf('action')
+    'manage' in @expandedActions || action in @expandedActions
 
   matchesSubject: (subject) ->
-    @subjects.indexOf('all') || @subjects.indexOf(subject) || matchesSubjectClass(subject)
+    'all' in @subjects || subject in @subjects || matchesSubjectClass(subject)
 
   # TODO: Fix!
   matchesSubjectClass: (subject) ->

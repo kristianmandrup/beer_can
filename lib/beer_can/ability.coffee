@@ -126,7 +126,7 @@ class BeerCan.Ability # extends Class
     results = _.flatten [action]
     _.each(aliasedActions,
     	-> (aliasedAction, actions)
-      	results += aliasesForAction(aliasedAction) if actions.indexOf action
+      	results += aliasesForAction(aliasedAction) if action in actions
     results
 
   rules: ->
