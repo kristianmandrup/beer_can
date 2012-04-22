@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "coffee-script":      ">= 1.2.0",
+    "jasmine-node":       ">= 1.0",
     "mocha":              ">= 0.8.1"
   },
   "scripts": {

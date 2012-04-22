@@ -47,7 +47,7 @@ helpers:
 # spec_files:
 #   - **/*[sS]pec.js
 #
-spec_files: ["**/*_test.js"]
+spec_files:
 # src_dir
 #
 # Source directory path. Your src_files must be returned relative to this path. 

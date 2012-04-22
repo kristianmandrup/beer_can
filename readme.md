@@ -130,6 +130,26 @@ Complex conditions
 * byAny(method_path, other_fun) - other is part of method_path collection
 * byAny(pathFun, other_fun) - other is part of path collection
 
+## Running tests jasmine ruby
+
+Run
+
+`bundle`
+
+To install the ruby gems
+
+See [Jasmine - headless](http://johnbintz.github.com/jasmine-headless-webkit/)
+
+Then run
+
+`jasmine-headless-webkit`
+
+## Running tests jasmine node
+
+`npm install jasmine-node -g`
+
+`jasmine-node --color spec`
+
 ## Notes on Node modules
 * [Cakefile template](https://github.com/twilson63/cakefile-template/blob/master/Cakefile)
 * [Piece of Cakefile](http://k20e.com/blog/2011/05/02/a-piece-of-cakefile/)
