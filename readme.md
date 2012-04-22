@@ -146,9 +146,24 @@ Then run
 
 ## Running tests jasmine node
 
-`npm install jasmine-node -g`
+Install jasmine-node
+
+`npm install jasmine-node -g
+
+Run
 
 `jasmine-node --color spec`
+
+## Running tests with mocha
+
+Install mocha
+
+`npm install mocha -g
+
+Run
+
+`npm test`
+
 
 ## Notes on Node modules
 * [Cakefile template](https://github.com/twilson63/cakefile-template/blob/master/Cakefile)
