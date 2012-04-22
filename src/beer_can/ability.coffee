@@ -142,3 +142,5 @@ class BeerCan.Ability # extends Class
     _.reverse(rules).select (rule) ->
       rule.expandedActions = expandActions(rule.actions)
       rule.relevant(action, subject)
+
+module.exports = BeerCan.Ability

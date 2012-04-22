@@ -1,2 +1,2 @@
 console.log 'Requiring beer can module'
-require './beer_can'
+require './lib/beer_can'
