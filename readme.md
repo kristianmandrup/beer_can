@@ -130,3 +130,9 @@ Complex conditions
 * byAny(method_path, other_fun) - other is part of method_path collection
 * byAny(pathFun, other_fun) - other is part of path collection
 
+## Notes on Node modules
+* [Cakefile template](https://github.com/twilson63/cakefile-template/blob/master/Cakefile)
+* [Piece of Cakefile](http://k20e.com/blog/2011/05/02/a-piece-of-cakefile/)
+* [Coffee build tools](https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools)
+* [How to module](http://howtonode.org/how-to-module)
+* [Publishing Node modules](http://www.unrealcreations.com/groups/jahovaos/wiki/34d86/Writing_and_Publishing_nodejs_Modules.html)
