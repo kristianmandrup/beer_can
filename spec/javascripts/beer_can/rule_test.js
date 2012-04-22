@@ -1,7 +1,5 @@
 (function() {
 
-  require('../config');
-
   describe('BeerCan.Rule', function() {
     beforeEach(function() {
       return this.rule = new BeerCan.Rule(true, 'read', Integer);

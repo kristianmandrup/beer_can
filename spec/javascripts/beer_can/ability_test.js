@@ -1,7 +1,5 @@
 (function() {
 
-  require('../config');
-
   describe('Tower.Authorization.BeerCan.Ability', function() {
     beforeEach(function() {
       this.ability = {};

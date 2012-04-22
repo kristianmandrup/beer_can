@@ -1,5 +1,3 @@
-require '../config'
-  
 describe 'Tower.Authorization.BeerCan.Ability', ->
 	beforeEach ->
     @ability = {}

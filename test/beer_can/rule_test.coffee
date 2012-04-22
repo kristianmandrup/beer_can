@@ -1,5 +1,3 @@
-require '../config'
-
 # Most of Rule functionality is tested in Ability specs
 describe 'BeerCan.Rule', ->
   beforeEach ->

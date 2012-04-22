@@ -1,5 +1,3 @@
-require '../config'
-
 describe 'BeerCan.Mixin', ->
   beforeEach ->
   	@mixer = {}

@@ -11,7 +11,6 @@
 #   - dist/**/*.js
 #
 src_files:
-    - lib/**/*.js
 
 # stylesheets
 #
@@ -48,11 +47,11 @@ helpers:
 # spec_files:
 #   - **/*[sS]pec.js
 #
-spec_files:
-
+spec_files: ["**/*_test.js"]
 # src_dir
 #
-# Source directory path. Your src_files must be returned relative to this path. Will use root if left blank.
+# Source directory path. Your src_files must be returned relative to this path. 
+# Will use root if left blank.
 # Default: project root
 #
 # EXAMPLE:

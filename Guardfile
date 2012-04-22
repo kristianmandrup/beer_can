@@ -3,6 +3,6 @@ guard 'coffeescript', :output => 'lib' do
 end
 
 guard 'coffeescript', :output => 'spec/javascripts' do
-  watch(%r{^test\/(.+_test\.coffee)$})
+  watch(%r{^test\/(.+\.coffee)$})
 end
 
