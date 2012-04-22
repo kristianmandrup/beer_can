@@ -1,6 +1,6 @@
 require '../config'
 
-describe 'BeerCan.Api'
+describe 'BeerCan.Api', ->
   beforeEach ->
-  	@ctx = {}
-  	@ctx extends BeerCan.Api
+  	@ctx = {} 
+  	@ctx extend BeerCan.Api

@@ -1,6 +1,6 @@
 require '../config'
 
-describe 'BeerCan.Mixin'
+describe 'BeerCan.Mixin', ->
   beforeEach ->
   	@mixer = {}
   	@mixer extends BeerCan.Mixin

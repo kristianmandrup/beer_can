@@ -11,7 +11,7 @@ class BeerCan.Rule # extends Class
     # and subject respectively (such as :read, @project). The third argument is a hash
     # of conditions and the last one is the block passed to the "can" call.
   constructor: (baseBehavior, action, subject, closure) ->
-    @initialize (baseBehavior, action, subject, closure)
+    @initialize baseBehavior, action, subject, closure
 
   initialize: (@baseBehavior, action, subject, @closure) ->
     if closure and not _.isFunction(closure)
@@ -42,7 +42,7 @@ class BeerCan.Rule # extends Class
     'all' in @subjects or subject in @subjects or matchesSubjectClass(subject)
 
   matchesSubjectClass: (subject) ->
-    @subjects.matchesAny: (sub) ->
+    @subjects.matchesAny = (sub) ->
       subject instanceof sub
 
   callClosureWithAll: (action, subject, args...) ->

@@ -1,3 +1,5 @@
+Array::remove = (e) -> @splice(t, 1)[0] if (t = @indexOf(e)) > -1
+
 # top level namespace
 BeerCan = {}
 
@@ -13,6 +15,6 @@ class BeerCan.RuleResult extends Boolean
 	byThe: (relation) ->
 		# ...
 	byAny: (models) ->
-		# ...
+		# ... 
 
 exports.BeerCan

@@ -9,4 +9,4 @@ describe 'BeerCan.Model', ->
     expect(@model.accessible_by currentUser, 'read').toBeTrusy()
 
   it "should not be accessible_by current user for writing", ->
-    expect(@model.accessible_by(currentUser, 'write').toBeFalsy()
+    expect(@model.accessible_by currentUser, 'write').toBeFalsy()

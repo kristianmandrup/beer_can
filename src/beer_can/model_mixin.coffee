@@ -6,4 +6,4 @@ class BeerCan.ModelMixin # extends Class
   # fill up the model with an Authorization context
 	cans: (context) ->
 		@authContext = context
-		@ extends BeerCan.Api
+		@ extend BeerCan.Api

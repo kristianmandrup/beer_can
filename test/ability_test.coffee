@@ -3,7 +3,7 @@ require '../config'
 describe 'Tower.Authorization.BeerCan.Ability', ->
 	beforeEach ->
     @ability = {}
-    @ability.extends BeerCan.Ability
+    @ability.extends BeerCan.Ability 
 
   it "should be able to 'read' anything", ->
     @ability.can 'read', 'all'
@@ -18,17 +18,14 @@ describe 'Tower.Authorization.BeerCan.Ability', ->
 
   it "should pass true to `can` when non false/nil is returned in closure", ->
     @ability.can 'read', 'all'
-    @ability.can 'read', String, 
-    	# TODO test that sym is nil when no instance is passed
-    	-> (sym) 
-      	"foo" 
+    @ability.can 'read', String, (sym) ->
+      "foo" 
     
     expect(@ability.can 'read', 'some_string').toBeTruthy()
 
 
   it "should pass nil to a closure when no instance is passed", ->
-    @ability.can 'read', String,
-    	-> (sym) 
+    @ability.can 'read', String, (sym) ->
       	sym.should be_nil
       	true
 
@@ -37,13 +34,11 @@ describe 'Tower.Authorization.BeerCan.Ability', ->
 
   it "should pass to previous rule, if closure returns false or nil", ->
     @ability.can 'read', String
-    @ability.can 'read', Integer,
-    	-> (i)
-      	i < 5
+    @ability.can 'read', Integer, (i) ->
+      i < 5
     
-    @ability.can 'read', Integer,
-    	-> (i)
-      	i > 10
+    @ability.can 'read', Integer, (i) ->
+      i > 10
 
     expect(@ability.can 'read', String).toBeTruthy()
     expect(@ability.can 'read', 11).toBeTruthy()
@@ -52,10 +47,9 @@ describe 'Tower.Authorization.BeerCan.Ability', ->
 
 
   it "should not pass class with object if 'all' objects are accepted", ->
-    @ability.can 'preview', 'all',
-    	-> (object)
-      	object.should == 123
-      	@closureCalled = true
+    @ability.can 'preview', 'all', (object) ->
+      object.should == 123
+      @closureCalled = true
 
     expect(@ability.can 'preview', 123).toBeTruthy()
     expect(@closureCalled).toBeTruthy()
@@ -63,8 +57,7 @@ describe 'Tower.Authorization.BeerCan.Ability', ->
 
   it "should not call closure when only class is passed, only return true", ->
     @closureCalled = false
-    @ability.can 'preview', 'all',
-    	-> (object)
+    @ability.can 'preview', 'all', (object) ->
       @closureCalled = true
     
     expect(@ability.can 'preview', Object).toBeTruthy()
@@ -72,8 +65,7 @@ describe 'Tower.Authorization.BeerCan.Ability', ->
 
 
   it "should pass only object for global manage actions", ->
-    @ability.can 'manage', String,
-    	-> (object)
+    @ability.can 'manage', String, (object) ->
       	object.should == "foo"
       	@closureCalled = true
     

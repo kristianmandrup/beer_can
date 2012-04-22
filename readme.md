@@ -2,6 +2,21 @@
 
 A Tower extension that provides Authorization similar to CanCan that we have come to love in the Rails world.
 
+## Development
+
+The tests use Jasmine. a Guardfile is included to ensure coffeescript files are watched and converted to javascript files that can be executed with Jasmine.
+See http://watirmelon.com/2012/01/23/writing-a-coffeescript-web-application-using-tdd/
+
+`guard init coffeescript`
+
+`gem install jasmine guard-coffeescript`
+
+`jasmine init`
+
+Modify Jasmine configuration...
+
+There’s a rake task called ‘jasmine’ which you can run to launch a jasmine server locally on port 8888. Then go to that pahe `http://localhost:8888` to see the results of the test.
+
 ## Current status
 
 The initial version does away with the conditions hash and anything related to SQL queries. Also there is no support for resources and other extra features.
