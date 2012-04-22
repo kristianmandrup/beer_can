@@ -1,4 +1,6 @@
-describe 'Tower.Authorization.BeerCan.Ability', ->
+console.log 'Testing: BeerCan.Ability' 
+
+describe 'BeerCan.Ability', ->
 	beforeEach ->
     @ability = {}
     @ability.extends BeerCan.Ability 

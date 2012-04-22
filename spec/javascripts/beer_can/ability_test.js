@@ -1,6 +1,8 @@
 (function() {
 
-  describe('Tower.Authorization.BeerCan.Ability', function() {
+  console.log('Testing: BeerCan.Ability');
+
+  describe('BeerCan.Ability', function() {
     beforeEach(function() {
       this.ability = {};
       return this.ability["extends"](BeerCan.Ability);
