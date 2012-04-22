@@ -134,5 +134,6 @@ Complex conditions
 * [Cakefile template](https://github.com/twilson63/cakefile-template/blob/master/Cakefile)
 * [Piece of Cakefile](http://k20e.com/blog/2011/05/02/a-piece-of-cakefile/)
 * [Coffee build tools](https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools)
+* [Modules and npm](http://book.mixu.net/ch8.html)
 * [How to module](http://howtonode.org/how-to-module)
 * [Publishing Node modules](http://www.unrealcreations.com/groups/jahovaos/wiki/34d86/Writing_and_Publishing_nodejs_Modules.html)
