@@ -46,9 +46,13 @@
   "devDependencies": {
     "coffee-script":      ">= 1.2.0",
     "jasmine-node":       ">= 1.0",
-    "mocha":              ">= 0.8.1"
+    "mocha":              ">= 0.8.1",
+    "pathfinder":         ">= 0.3.0-1",
+    "chai":               ">= 0.5.3",
+    "sinon":              ">= 1.3.4",
+    "async":              ">= 0.1.18"
   },
   "scripts": {
-    "test": "mocha $(find spec/coffee -name \"*spec.coffee\") -r coffee-script $@"
+    "test": "mocha spec/coffee/config.coffee $(find spec/coffee -name "*spec.coffee") -r coffee-script $@"
   }
 }
