@@ -53,6 +53,6 @@
     "async":              ">= 0.1.18"
   },
   "scripts": {
-    "test": "mocha spec/coffee/config.coffee $(find spec/coffee -name "*spec.coffee") -r coffee-script $@"
+    "test": "mocha spec/coffee/config.coffee $(find spec/coffee -name \"*_spec.coffee\") -r coffee-script $@"
   }
 }

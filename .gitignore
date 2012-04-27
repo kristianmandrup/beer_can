@@ -2,3 +2,4 @@
 sandbox
 .jhw-cache
 npm-debug.log
+node_modules

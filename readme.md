@@ -156,9 +156,9 @@ Run
 
 ## Running tests with mocha
 
-Install mocha
+Install all dependencies from `package.json`:
 
-`npm install mocha -g
+`npm install`
 
 Run
 
