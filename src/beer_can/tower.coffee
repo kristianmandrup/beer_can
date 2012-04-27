@@ -1,3 +1,3 @@
-require('.tower/controller')
-require('.tower/model')
-require('.tower/view')
+require('./tower/controller')
+require('./tower/model')
+require('./tower/view')
