@@ -15,7 +15,7 @@ See http://watirmelon.com/2012/01/23/writing-a-coffeescript-web-application-usin
 
 Modify Jasmine configuration...
 
-There’s a rake task called ‘jasmine’ which you can run to launch a jasmine server locally on port 8888. Then go to that pahe `http://localhost:8888` to see the results of the test.
+There’s a rake task called ‘jasmine’ which you can run to launch a jasmine server locally on port 8888. Then go to that page `http://localhost:8888` to see the results of the test.
 
 ## Current status
 
