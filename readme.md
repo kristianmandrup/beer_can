@@ -1,5 +1,7 @@
 # Beer Can
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/beer_can.svg)](https://greenkeeper.io/)
+
 A Tower extension that provides Authorization similar to CanCan that we have come to love in the Rails world.
 
 ## Development
